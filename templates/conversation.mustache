@@ -1,0 +1,119 @@
+{{#has_history}}
+<div class="prompt-history-list">
+    {{#history}}
+    <div class="prompt-item">
+        <button
+            type="button"
+            class="prompt-question"
+            aria-expanded="false">
+
+            <span class="prompt-text-question">
+                {{prompt}}
+            </span>
+
+            <span class="prompt-arrow">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M6 9L12 15L18 9"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                </svg>
+            </span>
+
+        </button>
+
+        <div class="prompt-answer">
+
+            <h3 class="text-label">
+                {{#str}}answer, block_prompt{{/str}}
+            </h3>
+
+            <p class="prompt-text">
+                {{response.answer}}
+            </p>
+
+            <span class="date-text">
+                {{date}}
+            </span>
+
+        </div>
+
+    </div>
+
+    {{/history}}
+    <h2 class="prompt-history-title">
+        {{#str}}previous_queries, block_prompt{{/str}}
+    </h2>
+</div>
+{{/has_history}}
+
+{{#current}}
+<div class="current">
+    <h3 class="text-label">
+        {{#str}}question, block_prompt{{/str}}
+    </h3>
+            
+    <p class="prompt-text">
+        {{prompt}}
+    </p>
+
+    <h3 class="text-label">{{#str}}answer, block_prompt{{/str}}</h3>
+
+    <p class="prompt-text">
+        {{{answer}}}
+    </p>
+
+    {{#sources}}
+    <h3 class="text-label">
+        {{#str}}sources, block_prompt{{/str}}
+    </h3>
+            
+    <ul class="prompt-sources">
+        <li class="source-item">
+            {{#sources}}
+                {{#file_url}}
+                <a class="source-document"
+                href="{{file_url}}"
+                target="_blank"
+                rel="noopener noreferrer">
+                    {{document_name}}
+                </a>
+            {{/file_url}}
+
+            {{^file_url}}
+                <span class="source-document">
+                    {{document_name}}
+                </span>
+            {{/file_url}}
+            {{/sources}}
+
+        </li>
+    </ul>
+    {{/sources}}
+
+    {{#uncertain}}
+        <span class="answer-badge answer-badge-warning">
+            {{#str}}context_not_sufficient, block_prompt{{/str}}
+        </span>
+    {{/uncertain}}
+
+    {{^uncertain}}
+        <span class="answer-badge answer-badge-reliable">
+            {{#str}}context_sufficient, block_prompt{{/str}}
+        </span>
+    {{/uncertain}}
+
+    <span class="date-text">
+        {{timestamp}}
+    </span>
+</div>
+{{/current}}
+

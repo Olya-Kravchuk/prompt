@@ -1,68 +1,33 @@
-<div class="prompt-history-block">
-
-    <div class="prompt-history-list">
-
-        {{#history}}
-
-        <div class="prompt-item">
-
-            <button
-                type="button"
-                class="prompt-question"
-                aria-expanded="false">
-
-                <span class="prompt-text">
-                    {{prompt}}
-                </span>
-
-                <span class="prompt-arrow">
-                    <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-
-                        <path
-                            d="M6 9L12 15L18 9"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                    </svg>
-                </span>
-
-            </button>
-
-            <div class="prompt-answer">
-
-                <div class="answer-label">
-                    {{#str}}answer, block_prompt{{/str}}
-                </div>
-
-                <div class="answer-text">
-                    {{response.answer}}
-                </div>
-
-                <div class="answer-date">
-                    {{date}}
-                </div>
-
-            </div>
-
-        </div>
-
-        {{/history}}
-
+<div class="prompt-block">
+    <div class="prompt-content" id="prompt-content">
+        {{> block_prompt/conversation }}
     </div>
 
-    <form id="chatform" class="chat-form">
+    <form id="chatform" class="chat-form" method="post" action="{{form_action}}" data-courseid="{{courseid}}">
+        <input
+            type="hidden"
+            name="sesskey"
+            value="{{sesskey}}">
 
-        
+        <input
+            type="hidden"
+            name="block_prompt_submit"
+            value="1">
 
+        <div id="prompt-status" class="prompt-status" hidden>
+            <div>
+                <strong class="prompt-status-title">
+                    {{#str}}prompt_sent, block_prompt{{/str}}
+                </strong>
+
+                <p class="prompt-status-text">
+                    {{#str}}prompt_waiting, block_prompt{{/str}}
+                </p>
+            </div>
+        </div>
         <textarea
             id="question"
-            name="question"
+            name="prompt"
             class="chat-input"
             placeholder="{{#str}}prompt_placeholder, block_prompt{{/str}}"
             required></textarea>
@@ -83,13 +48,9 @@
                 <path
                     d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z"
                     fill="white"/>
-
             </svg>
-
         </button>
-
-     
-
     </form>
 
+    
 </div>

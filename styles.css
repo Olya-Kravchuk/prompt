@@ -1,43 +1,112 @@
-.prompt-history-block {
-    background: #fbfbfb;
-    color: #1f2937;
-    border: 1px solid #dee2e6;
+:root {
+    /* Text */
+    --turi-color-text-primary: #0e1218;
+    --turi-color-text-secondary: #374151;
+    /* --turi-color-text-tertiary: #6b7280; */
+    --turi-color-text-tertiary: #1f7a6d;
+    --turi-color-text-muted: #9ca3af;
+    --turi-color-text-label: #8a8a8a;
+
+    /* Background */
+    --turi-color-background-primary: #ffffff;
+    --turi-color-background-secondary: #fbfbfb;
+    --turi-color-background-tertiary: #f8f9fa;
+    --turi-color-background-active: #f5f3ff;
+
+    /* Border */
+    --turi-color-border-primary: #dee2e6;
+    --turi-color-border-secondary: #e5e7eb;
+    --turi-color-border-input: #ced4da;
+
+    /* Links */
+    --turi-color-link: #1d4ed8;
+    --turi-color-link-hover: #1e40af;
+    --turi-color-link-active: #1e3a8a;
+    --turi-color-link-visited: #6d28d9;
+
+
+    /* Accent */
+    /* --turi-color-accent: #6366f1; */
+    --turi-color-accent: #16233a;
+    /* --turi-color-accent-hover: #4f46e5; */
+    --turi-color-accent-hover: #1d3459;
+    --turi-color-accent-active: #4338ca;
+    --turi-color-accent-light: #a5b4fc;
+    --turi-color-accent-background: #f5f3ff;
+    --turi-color-accent-border: #ddd6fe;
+
+    /* Status - Warning */
+    --turi-color-warning-text: #672724;
+    --turi-color-warning-background: #fff5f5;
+    --turi-color-warning-border: #f5c2c0;
+
+    /* Status - Reliable / Success */
+    /* --turi-color-success-text: #247a45; */
+    --turi-color-success-text: #1f7a6d;
+    --turi-color-success-background: #f0faf4;
+    --turi-color-success-border: #c6ecd3;
+
+    /* Focus */
+    --turi-color-focus: rgba(99, 102, 241, 0.15);
+
+    /* Shadow */
+    --turi-color-shadow: rgba(99, 102, 241, 0.15);
+
+    --turi-font: "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+
+.prompt-block {
+    /* background: linear-gradient(180deg, #eef2f9, #ffffff 60%); */
+    background: var(--turi-color-background-secondary);
+    color: var(--turi-color-text-primary);
+    border: 1px solid var(--turi-color-border-primary);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
-    /* height: 400px; */
-    height: calc(100vh - 250px);
-    min-height: 0;
+    padding: 5px;
+    min-height: 120px;
+    height: auto;
+    /* max-height: calc(100vh - 270px); */
+    /* max-height: calc(100dvh - 3500px); */
+    box-sizing: border-box;
+    font-family: var(--turi-font);
 }
-
-.prompt-history-list {
-    background: #fbfbfb;
+.prompt-content {
     flex: 1 1 auto;
     min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-color: #6366f1 #f8f9fa;
-    scrollbar-width: thin;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
+    /* scrollbar-color: var(--turi-color-accent) var(--turi-color-background-tertiary);
+    scrollbar-width: thin; */
+}
+/* .prompt-content::-webkit-scrollbar {
+    width: 2px;
 }
 
-/* Chrome, Edge, Safari */
-.prompt-history-list::-webkit-scrollbar {
-    width: 8px;
+.prompt-content::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.prompt-history-list::-webkit-scrollbar-track {
-    background: #f8f9fa;
-}
-
-.prompt-history-list::-webkit-scrollbar-thumb {
-    background: #6366f1;
+.prompt-content::-webkit-scrollbar-thumb {
+    background: var(--turi-color-accent);
     border-radius: 10px;
 }
 
+.prompt-content::-webkit-scrollbar-thumb:hover {
+    background: var(--turi-color-accent-hover);
+} */
+
+.prompt-history-list {
+    /* background: var(--turi-color-background-secondary); */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .prompt-item {
-    border: 1px solid #dee2e6;
+    border: 1px solid var(--turi-color-border-primary);
     border-radius: 8px;
-    margin: 5px;
     overflow: hidden;
 }
 
@@ -47,10 +116,12 @@
 
 .prompt-question {
     width: 100%;
+    /* min-height: 50px; */
+    box-sizing: border-box;
     border: 0;
-    background: #ffffff;
-    color: #1f2937;
-    padding: 14px 16px;
+    background: var(--turi-color-background-primary);
+    color: var(--turi-color-text-primary);
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,16 +132,16 @@
 }
 
 .prompt-question:hover {
-    background: #f8f9fa;
+    background: var(--turi-color-background-tertiary);
 }
 
-.prompt-text {
+/* .prompt-text {
     flex: 1;
     padding-right: 12px;
-}
+} */
 
 .prompt-arrow {
-    color: #6b7280;
+    color: var(--turi-color-text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,10 +156,10 @@
 
 .prompt-answer {
     display: none;
-    background: #f8f9fa;
-    color: #374151;
-    padding: 14px 16px;
-    border-top: 1px solid #e5e7eb;
+    background: var(--turi-color-background-tertiary);
+    color: var(--turi-color-text-secondary);
+    padding: 10px 12px;
+    border-top: 1px solid var(--turi-color-border-secondary);
 }
 
 .prompt-item.is-open .prompt-answer {
@@ -99,31 +170,143 @@
     transform: rotate(180deg);
 }
 
-.answer-label {
-    color: #6b7280;
-    font-size: 11px;
+/* .prompt-text-question {
+    display: block;
+    width: 100%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #0e1218;
+    margin: 0;
+} */
+.prompt-text-question {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--turi-color-text-primary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prompt-item.is-open .prompt-text-question {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+
+.text-label {
+    color: var(--turi-color-text-tertiary);
+    font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-top: 7px;
     margin-bottom: 7px;
 }
 
-.answer-text {
-    font-size: 13px;
-    line-height: 1.6;
-    color: #374151;
+.prompt-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--turi-color-text-primary);
+    margin: 0;
+}
+.answer-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 8px 0;
+}
+
+.answer-badge-warning {
+    color: var(--turi-color-warning-text);
+    background: var(--turi-color-warning-background);
+    border: 1px solid var(--turi-color-warning-border);
+}
+
+.answer-badge-reliable {
+    color: var(--turi-color-success-text);
+    background: var(--turi-color-success-background);
+    border: 1px solid var(--turi-color-success-border);
+}
+
+.date-text {
+    display: block;
+    margin: 4px 0;
+    font-size: 10px;
+    color: var(--turi-color-text-muted);
+}
+.prompt-sources {
+    /* background: var(--turi-color-background-tertiary); */
+    color: var(--turi-color-text-secondary);
+    padding: 5px;
+}
+.source-item {
+    list-style: none;
+    background-color: var(--turi-color-background-primary);
+}
+.source-document {
+    display: inline-block;
+    color: var(--turi-color-link);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.source-document:hover {
+    color: var(--turi-color-link-hover);
+    text-decoration: underline;
+}
+
+.source-document:visited {
+    color: var(--turi-color-link-visited);
+}
+
+.prompt-history-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    color: var(--turi-color-text-label);
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.prompt-history-title::before,
+.prompt-history-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--turi-color-border-secondary);
 }
 
 .chat-form {
     flex: 0 0 auto;
-    background: #fbfbfb;
-    padding: 5px;
+    /* background: var(--turi-color-border-secondary); */
+    /* padding: 5px; */
     /* padding: 12px;
     background: #ffffff;
     border-top: 1px solid #e5e7eb; */
     position: relative;
-    width: auto;
-    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    /* overflow: hidden; */
 }
 
 /* .chat-input-wrapper {
@@ -134,21 +317,44 @@
 .chat-input {
     width: 100%;
     min-height: 100px;
+    max-height: 400px;
+    height: auto;
     box-sizing: border-box;
-    resize: vertical;
+    resize: none;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 12px 55px 45px 12px;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--turi-color-border-input);
     border-radius: 8px;
-    background: #ffffff;
-    color: #1f2937;
+    background: var(--turi-color-background-primary);
+    color: var(--turi-color-text-primary);
     font-size: 14px;
     line-height: 1.5;
+    scrollbar-color: var(--turi-color-accent) var(--turi-color-background-tertiary);
+    scrollbar-width: thin;
+}
+
+.chat-input::-webkit-scrollbar {
+    width: 2px;
+}
+
+.chat-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-input::-webkit-scrollbar-thumb {
+    background: var(--turi-color-accent);
+    border-radius: 10px;
+}
+
+.chat-input::-webkit-scrollbar-thumb:hover {
+    background: var(--turi-color-accent-hover);
 }
 
 .chat-input:focus {
     outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+    border-color: var(--turi-color-accent-hover);
+    /* box-shadow: 0 0 0 2px var(--turi-color-focus); */
 }
 
 .send-button {
@@ -163,23 +369,102 @@
     justify-content: center;
     border: none;
     border-radius: 50%;
-    background: #6366f1;
+    background: var(--turi-color-accent);
     cursor: pointer;
     transition:
         background 0.2s ease,
         transform 0.15s ease;
 }
 
-.send-button:hover {
-    background: #4f46e5;
+.send-button:hover:not(:disabled) {
+    background: var(--turi-color-accent-hover);
     transform: scale(1.05);
 }
 
-.send-button:active {
+.send-button:active:not(:disabled) {
+    background: var(--turi-color-accent-active);
     transform: scale(0.95);
+}
+
+.send-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.send-button.is-loading {
+    isolation: isolate;
+}
+
+.send-button.is-loading::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 3px solid transparent;
+    border-top-color: var(--turi-color-accent);
+    border-right-color: var(--turi-color-accent);
+    border-radius: 50%;
+    animation: prompt-spin 0.8s linear infinite;
+    pointer-events: none;
 }
 
 .send-button svg {
     width: 19px;
     height: 19px;
+}
+
+.prompt-status-title,
+.prompt-status-text {
+    background: linear-gradient(
+        90deg,
+        var(--turi-color-accent) 0%,
+        var(--turi-color-success-text) 40%,
+        #75c9b8 50%,
+        var(--turi-color-success-text) 60%,
+        var(--turi-color-accent) 100%
+    );
+
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    animation: prompt-text-shimmer 3s ease-in-out infinite;
+}
+
+.prompt-status-title {
+    font-weight: 500;
+}
+
+.prompt-status-text {
+    animation-delay: 0.3s;
+}
+
+@keyframes prompt-text-shimmer {
+    from {
+        background-position: 100% 50%;
+    }
+
+    to {
+        background-position: -150% 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .prompt-status-title,
+    .prompt-status-text {
+        animation: none;
+        background: none;
+        color: var(--turi-color-success-text);
+        -webkit-text-fill-color: currentColor;
+    }
+}
+
+@keyframes prompt-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
