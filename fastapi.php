@@ -2,16 +2,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Send prompt to FastAPI.
- *
- * If $prompt is empty, the same endpoint is used only to retrieve
- * the user's history. FastAPI must handle empty prompt accordingly.
- *
- * @param string $prompt
- * @param int $courseid
- * @return array
- */
 function block_prompt_send_prompt(string $prompt, int $courseid): array {
     global $USER, $COURSE, $DB;
 
@@ -47,7 +37,6 @@ function block_prompt_send_prompt(string $prompt, int $courseid): array {
             'course_name' => $course->fullname,
             'instructor' => $instructor,
         ],
-
         'options' => [
             'language' => $language,
             // 'retrieval' => [
@@ -130,17 +119,8 @@ function block_prompt_send_prompt(string $prompt, int $courseid): array {
     return $data;
 }
 
-/**
- * Build user hash.
- *
- * @param int $userid
- * @param int $courseid
- * @return string
- */
-function block_prompt_get_user_hash(
-    int $userid,
-    int $courseid
-): string {
+
+function block_prompt_get_user_hash(int $userid, int $courseid): string {
 
     $salt = get_config(
         'local_turi_rag',
@@ -152,27 +132,17 @@ function block_prompt_get_user_hash(
 
     return hash(
         'sha256',
-        'userid:' . $userid .
-        '|bereichs_id:' . $courseid .
-        $salt
+        $userid . $courseid . $salt
     );
 }
 
-/**
- * Generate a request ID.
- *
- * @param int $courseid
- * @param int $userid
- * @return string
- */
-function block_prompt_generate_request_id(
-    int $courseid,
-): string {
+function block_prompt_generate_request_id(int $courseid,): string {
     $salt = get_config(
         'local_turi_rag',
         'secret_salt'
     );
-    $timestamp = sprintf('%.6f', microtime(true));
+    // $timestamp = sprintf('%.6f', microtime(true));
+    $timestamp = microtime(true);
 
     $requestid = $courseid . $timestamp . $salt;
 
@@ -183,12 +153,6 @@ function block_prompt_generate_request_id(
     );
 }
 
-/**
- * Get course instructor.
- *
- * @param int $courseid
- * @return string
- */
 function block_prompt_get_course_instructor(int $courseid): string {
     $context = context_course::instance($courseid, IGNORE_MISSING);
 
