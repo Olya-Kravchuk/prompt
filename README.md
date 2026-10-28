@@ -12,6 +12,7 @@ Der Block Prompt ist vom Plugin **TURI RAG** abhängig. Damit der Block ordnungs
 2. **Verbindung konfigurieren:** Konfiguriere den Host und den Port, über die der Block die FastAPI-Anwendung erreicht.
 3. **RAG-Profil erstellen:** Erstelle und konfiguriere ein RAG-Profil in TURI RAG.
 4. **Block aktivieren:** Aktiviere die Prompt-Funktion für den gewünschten Kurs über die entsprechende Konfiguration in TURI RAG.
+5. **Block hinzufügen:** Aktiviere den Bearbeitungsmodus **(Edit Mode)** im gewünschten Moodle-Kurs. Füge anschließend über die Funktion „Block hinzufügen“ **(Add a block)** den Block **„TURI AI Assistant“** zum Kurs hinzu.
 
 ### Funktionsweise
 
